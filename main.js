@@ -17,7 +17,6 @@ const gameBot = function(maxValue, attemptsNum){
     const programmBot = function(){
         let answer = prompt('Угадай число от 1 до 100')
         let restartGame
-        
         if(answer === null){
             alert('Игра окончена')
             return
@@ -26,14 +25,14 @@ const gameBot = function(maxValue, attemptsNum){
             programmBot()
         }
 
+        attempts--
+
         switch(true){
-            case +answer > randomNumber && attempts > 0:
-                attempts--
+            case +answer > randomNumber && attempts !== 0:
                 alert(`загаданное число меньше, попыток осталось ${attempts}`)
                 programmBot()
                 break
-            case +answer < randomNumber && attempts > 0:
-                attempts--
+            case +answer < randomNumber && attempts !== 0:
                 alert(`загаданное число больше, попыток осталось ${attempts}`)
                 programmBot()
                 break
