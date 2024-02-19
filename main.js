@@ -27,22 +27,22 @@ const gameBot = function(maxValue, attemptsNum){
 
         attempts--
 
-        switch(true){
-            case +answer > randomNumber && attempts !== 0:
-                alert(`загаданное число меньше, попыток осталось ${attempts}`)
-                programmBot()
-                break
-            case +answer < randomNumber && attempts !== 0:
-                alert(`загаданное число больше, попыток осталось ${attempts}`)
-                programmBot()
-                break
-            case +answer === randomNumber:
-                alert(`Поздравляю, вы угадали, загаданное число ${randomNumber}`)
-                break
-            case attempts === 0:
-                restartGame = confirm(`Попытки кончились, хотите сыграть еще ?`)
-                examConfirm(restartGame)
+        if(+answer > randomNumber && attempts !== 0){
+            alert(`загаданное число меньше, попыток осталось ${attempts}`)
+            programmBot()
+        } else if(+answer < randomNumber && attempts !== 0){
+            alert(`загаданное число больше, попыток осталось ${attempts}`)
+            programmBot()
+        } else if(+answer === randomNumber){
+            restartGame = confirm(`Поздравляю, вы угадали, загаданное число ${randomNumber}. Хотите сыграть еще ?`)
+            examConfirm(restartGame)
+            return
+        } else if( attempts === 0){
+            restartGame = confirm(`Попытки кончились, хотите сыграть еще ?`)
+            examConfirm(restartGame)
+            return
         }
+
     }
     programmBot()
 }
